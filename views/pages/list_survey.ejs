@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Cần thiết cho 1 web -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+
+  <link rel="stylesheet" href="/index&manage.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <title>Hiển thị phiếu khảo sát</title>
+
+  <!-- Thư viện online cho Bootstrap -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src = "https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  <script src="https://kit.fontawesome.com/a9ea3721b5.js" crossorigin="anonymous"></script>
+  <SCRIPT LANGUAGE = "Javascript">
+    $(document).ready(function() {
+      $("a[href*='#']:not([href='#])").click(function() {
+        let target = $(this).attr("href");
+        $('html,body').stop().animate({
+          scrollTop: $(target).offset().top
+        }, 1000);
+        event.preventDefault();
+      });
+    });
+  </SCRIPT>
+</head>
+
+
+<!-- CSS tự định nghĩa -->
+
+<body style="background-color: #EEEEEE" id="backtotop">
+  <%- include header %>
+  <main role="main">
+    <div class="container marketing">
+      <br>
+      <div class="card">
+        <div class="card-header" style="background-color: #00cccc">
+          <h5><b>Phiếu khảo sát</b></h5>
+        </div>
+        <div class="card-body">
+          <div class="row padding">
+            <div class="col-3 col-sm-2 col-md-2">
+              <div class="card">
+                <img class="card-img-top" src="./images/logo.png">
+              </div>
+            </div>
+            <div class="col-9 col-sm-9 col-md-9">
+              <div class="card-body">
+                <h4 class="card-title"><a href="/createsurvey">Khảo sát năng lực lập trình của sinh viên</a></h4>
+                <p class="card-text">Mô tả: Khảo sát kĩ năng lập trình các ngôn ngữ C, C++, Java,...<br>
+                  Đăng bởi: <a href="/teacher_manage">Nguyễn Việt Anh</a><br>
+                  Thời gian tạo: 1 tháng trước
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><br>
+      <div class="card">
+        <div class="card-header" style="background-color: #00cccc">
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Danh sách lựa chọn
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/session">Danh sách câu hỏi- phiên hỏi đáp</a>
+            </div>
+
+          </div>
+        </div>
+        <div class="card-body">
+          <form id="search" class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+          </form><br>
+          <div class="card">
+            <div class="row padding">
+              <div class="col-3 col-sm-3 col-md-2">
+                <div class="card">
+                  <a href="/createsurvey">
+                   <img class= "card-img-top" src="./images/logo2.jpg" >
+                 </a>
+               </div>
+             </div>
+             <div class="col-9 col-sm-9 col-md-9">
+              <div class="card-body">
+                <h5 class="card-title"><a href="/createsurvey">Khảo sát, đánh giá sự khác biệt giữa C và C++</a></h5>
+                <p class="card-text">Có: 1999 lượt khảo sát<br>
+                 <small>4 giờ trước</small>
+               </p>
+             </div>
+           </div>
+         </div>
+       </div><br>
+
+       <div class="card">
+        <div class="row padding">
+          <div class="col-3 col-sm-3 col-md-2">
+            <div class="card">
+              <a href="/createsurvey">
+               <img class= "card-img-top" src="./images/logo2.jpg" >
+             </a>
+           </div>
+         </div>
+         <div class="col-9 col-sm-9 col-md-9">
+          <div class="card-body">
+            <h5 class="card-title"><a href="/createsurvey">Khảo sát, đánh giá sự khác biệt giữa C và C++</a></h5>
+            <p class="card-text">Có: 1999 lượt khảo sát<br>
+              <small>4 giờ trước</small>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div><br>
+    <%- include update_inf_user %>
+    <div class="card">
+      <div class="row padding">
+        <div class="col-3 col-sm-3 col-md-2">
+          <div class="card">
+            <a href="/createsurvey">
+             <img class= "card-img-top" src="./images/logo2.jpg" >
+           </a>
+         </div>
+       </div>
+       <div class="col-9 col-sm-9 col-md-9">
+        <div class="card-body">
+          <h5 class="card-title"><a href="/createsurvey">Khảo sát, đánh giá sự khác biệt giữa C và C++</a></h5>
+          <p class="card-text">Có: 1999 lượt khảo sát<br>
+            <small>4 giờ trước</small>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<!-- Quay về đầu trang -->
+<br>
+<br>
+<div id="lentren">
+  <a href="#backtotop"><i class="fas fa-angle-double-up" style="font-size: 35px;color: #555;margin-left: 90%; "></i></a>
+</div>
+<hr id = "phienhoidap" class="featurette-divider">
+</div>
+<%- include update_inf_user %>
+</main>
+<footer id="footer">
+  <ul style="padding: 15px; margin-bottom: 0px;">
+    <h2 style="padding-bottom: 0px;text-decoration: none;">Hệ thống hỏi - đáp Q&A</h2>
+
+    <p style="font-size: 12px"> @2019 design by Team 5</p>
+  </ul>
+</footer>
+</body>
+</html>

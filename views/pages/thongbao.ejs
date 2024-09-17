@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<!-- HEAD -->
+<head>
+  <!-- Cần thiết cho 1 web -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="/index&manage.css">
+  <link rel="stylesheet" href="/bootstrap/bootstrap-4.0.0.min.js">
+  <link rel="stylesheet" href="/bootstrap/bootstrap.min.css">
+
+
+  <title>Thông báo</title>
+
+  <!-- Thư viện online cho Bootstrap -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <!-- Xử lý Navigation -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="/dirPagination.js"> </script> <!-- nguồn code tham khảo https://www.youtube.com/watch?v=wee_si2U3M4-->
+  <script src="/angular.ng-modules.js"></script> <!--nguồn code tham khảo https://github.com/luisperezphd/ngModule-->
+  <script src = "https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  <script src="https://kit.fontawesome.com/a9ea3721b5.js" crossorigin="anonymous"></script>
+  <SCRIPT LANGUAGE = "Javascript">
+    $(document).ready(function() {
+      $("a[href*='#']:not([href='#])").click(function() {
+        let target = $(this).attr("href");
+        $('html,body').stop().animate({
+          scrollTop: $(target).offset().top
+        }, 1000);
+        event.preventDefault();
+      });
+    });
+  </SCRIPT>
+</head>
+<style type="text/css">
+  #id:hover {
+    background: #dddddd;
+  }
+
+</style>
+<!-- BODY -->
+<body style="background-color: #eeeeee;" id = "backtotop">
+
+  <%- include header %>
+  <div class="container"><br>
+    <div class="card" style="margin:10px;min-height: 250px;">
+      <div class="card-header" style="background-color: #bbbbbb;">
+        <h4>Thông báo của bạn</h4>
+      </div>
+      <div class="card-body">
+        <%if(tbao[0]){%> 
+        <div class="list-group">
+          <%for(var i=0;i< tbao.length;i++){%>
+          <%if(tbao[i].type==1){%>
+          <a href="/survey?id=<%=tbao[i].link%>" class="list-group-item list-group-item-action" id="id">Lúc <span id="time<%=i%>"></span>: Có thêm 1 người phản hồi phiếu khảo sát <span><b>  "<%=tbao[i].text%>" </b></span> của bạn. Tổng số người phản hồi hiện giờ là <%=tbao[i].mes%>. </a>
+          <%}%>
+          <%if(tbao[i].type==2){%>
+          <a href="/new_session?id=<%=tbao[i].link%>" class="list-group-item list-group-item-action" id="id">Lúc <span id="time<%=i%>"></span>: Có thêm 1 người đặt câu hỏi trong phiên hỏi đáp <span><b>  "<%=tbao[i].text%>" </b></span> của bạn.</a>
+          <%}%>
+          <%if(tbao[i].type==3){%>
+          <a href="/question?question_id=<%=tbao[i].link%>" class="list-group-item list-group-item-action" id="id">Lúc <span id="time<%=i%>"></span>: Có thêm 1 người trả lời câu hỏi <span><b> "<%=tbao[i].text%>" </b></span> của bạn.</a>
+          <%}%>
+          <%if(tbao[i].type==4){%>
+          <a href="/question?question_id=<%=tbao[i].link%>" class="list-group-item list-group-item-action" id="id">Lúc <span id="time<%=i%>"></span>: Có thêm 1 người phản hồi câu trả lời <span><b> "<%=tbao[i].text%>" </b></span> của bạn.</a>
+          <%}%>
+
+          <%}%>
+        </div>
+        <%}else{%>
+        <h4>Bạn chưa có thông báo nào cả!</h4>
+        <%}%>
+        <%- include update_inf_user %>
+      </div>
+    </div>
+    <br>
+    <br>
+    <div id="lentren">
+      <a href="#backtotop"><i class="fas fa-angle-double-up" style="font-size: 35px;color: #555;margin-left: 90%; "></i></a>
+    </div>
+    <hr id = "phienhoidap" class="featurette-divider">
+  </div>
+
+
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <ul style="padding: 15px; margin-bottom: 0px;">
+      <h2 style="padding-bottom: 0px;text-decoration: none;">Hệ thống hỏi - đáp Q&A</h2>
+      <p style="font-size: 12px"> @2019 design by Team 5</p>
+    </ul>
+  </footer>
+  <script type="text/javascript">
+
+    <%if(tbao[0]){
+      for(var i=0;i< tbao.length;i++){%>
+        var x= 'time'+<%=i%>;
+        var t= document.getElementById(x);
+        var date=new Date("<%=tbao[i].date%>").toLocaleString();
+        date=date.substring(0,25);
+        console.log(date);
+        t.innerHTML=date;
+        <%}}%>
+      </script>
+    </body>
+    </html>
